@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<transactions>  
+    <transaction id="53435" message="Recharge Metro Card" status="Failed">  
+    </transaction>  
+    <transaction id="54545" message="Recharge Metro Card" status="Successful">  
+    </transaction>	
+</transactions>
