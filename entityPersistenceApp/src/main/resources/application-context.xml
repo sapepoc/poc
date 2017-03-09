@@ -13,6 +13,6 @@
 	<import resource="camel-config.xml" />
 	<context:annotation-config />
 	<context:property-placeholder location="classpath:application.properties" />
-	<context:component-scan base-package="org.sapient.paserapp" />
+	<context:component-scan base-package="org.sapient.persistance" />
 
 </beans>

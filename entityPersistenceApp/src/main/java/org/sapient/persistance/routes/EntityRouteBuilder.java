@@ -3,9 +3,9 @@ package org.sapient.persistance.routes;
 import org.apache.camel.builder.RouteBuilder;
 import org.sapient.persistance.processors.EntityProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-@Component
+//@Component
+//Disable: not use
 public class EntityRouteBuilder extends RouteBuilder 
 {	
 	@Autowired
