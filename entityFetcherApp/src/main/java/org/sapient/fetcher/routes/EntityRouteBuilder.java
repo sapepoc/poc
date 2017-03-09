@@ -3,9 +3,9 @@ package org.sapient.fetcher.routes;
 import org.apache.camel.builder.RouteBuilder;
 import org.sapient.fetcher.processors.FileDetailsLogger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-@Component
+//@Component
+//Disabled: Not used
 public class EntityRouteBuilder extends RouteBuilder 
 {	
 	@Autowired

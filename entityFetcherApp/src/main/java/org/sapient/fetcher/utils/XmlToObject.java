@@ -7,10 +7,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import org.sapient.entites.transaction.Transactions;
-import org.sapient.entites.transaction.Transactions.Transaction;
-import org.sapient.entites.user.Users;
-
 public class XmlToObject 
 {  
 	@SuppressWarnings("unchecked")
@@ -44,20 +40,4 @@ public class XmlToObject
 			throw new RuntimeException("Problem in xml load  path="+ entityFilePath, e) ; 
 		} 
 	}
-	
-    public static void main(String[] args) 
-    {  
-    	Users users= loadEntity("./indir/users.xml", Users.class);  
-    	for (org.sapient.entites.user.Users.User user : users.getUser()) 
-    	{
-    		System.out.println("firstName="+ user.getFirstName() + " , lastName="+ user.getLastName());  
-    	}
-    	
-    	Transactions transactions = loadEntity("./indir/transactions.xml", Transactions.class);
-    	for (Transaction transaction : transactions.getTransaction())
-    	{
-    		System.out.println("Id="+ transaction.getId() + " , status="+ transaction.getStatus()
-    				+ " ,message="+ transaction.getMessage());  
-		}
-    }  
 }  
