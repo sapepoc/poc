@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
  * 
  * @author OM SINGH
  */
-@Component
+@Component(value="userEntityProcessor")
 public class UserEntityProcessor extends AbstractEntityProcessor<Users>
 {
 	public UserEntityProcessor() 

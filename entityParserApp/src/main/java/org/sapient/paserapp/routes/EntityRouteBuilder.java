@@ -4,9 +4,9 @@ import org.apache.camel.builder.RouteBuilder;
 import org.sapient.paserapp.processors.TranasactionEntityProcessor;
 import org.sapient.paserapp.processors.UserEntityProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
-@Component
+//@Component
+//Disable: Not use
 public class EntityRouteBuilder extends RouteBuilder 
 {	
 	@Autowired
