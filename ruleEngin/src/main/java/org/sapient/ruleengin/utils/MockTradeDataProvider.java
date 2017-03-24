@@ -26,12 +26,15 @@ public class MockTradeDataProvider
 	public static List<Trade> createDummyTrades()
 	{
 		List<Trade> trades  = new ArrayList<Trade>();
-		trades.add(createTrade(1, TradeType.BUY.toString(), "Sapient", "Airtel", 40, 10, System.currentTimeMillis()));
-		trades.add(createTrade(2, TradeType.SELL.toString(), "Sapient", "Airtel", 40, 10, System.currentTimeMillis()));
+		trades.add(createTrade(7, TradeType.SELL.toString(), "Sapient1", "Airtel", 60, 10, System.currentTimeMillis()));
+		trades.add(createTrade(8, TradeType.BUY.toString(), "Sapient1", "Airtel", 60, 10, System.currentTimeMillis()));
+		trades.add(createTrade(9, TradeType.BUY.toString(), "Sapient1", "Airtel", 60, 10, System.currentTimeMillis()));
 		trades.add(createTrade(3, TradeType.BUY.toString(), "Siemens", "Idea", 52, 8, System.currentTimeMillis()));
+		trades.add(createTrade(13, TradeType.BUY.toString(), "Siemens", "Idea", 52, 8, System.currentTimeMillis()));
 		trades.add(createTrade(4, TradeType.BUY.toString(), "HCL", "Airtel", 50, 6, System.currentTimeMillis()));
 		trades.add(createTrade(5, TradeType.BUY.toString(), "HCL", "Airtel", 50, 6, System.currentTimeMillis()));
 		trades.add(createTrade(6, TradeType.SELL.toString(), "HCL", "Airtel", 50, 6, System.currentTimeMillis()));
+		trades.add(createTrade(12, TradeType.SELL.toString(), "Siemens", "Idea", 52, 8, System.currentTimeMillis()));
 		
 		return trades;
 	}

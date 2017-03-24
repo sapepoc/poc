@@ -1,5 +1,8 @@
 package org.sapient.ruleengin.trade.alarm;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.sapient.ruleengin.alarm.core.AlarmEvent;
 import org.sapient.ruleengin.alarm.core.AlarmEventObserver;
 import org.sapient.ruleengin.alarm.core.AlarmEventProvider;
@@ -11,6 +14,7 @@ import org.springframework.stereotype.Component;
 public class WashTradeEventObserver implements AlarmEventObserver<AlarmEvent>
 {
 	private AlarmEventProvider alarmEventProvider;
+	private List<AlarmEvent> events = new ArrayList<>(); 
 	
 	@Autowired
 	public WashTradeEventObserver(AlarmEventProvider alarmEventProvider)
@@ -29,5 +33,10 @@ public class WashTradeEventObserver implements AlarmEventObserver<AlarmEvent>
 	public void notify(AlarmEvent alarmEvent) 
 	{
 		System.out.println("WashTradeEvent event received="+alarmEvent);
+		events.add(alarmEvent);
+	}
+	
+	public List<AlarmEvent> getAlarmEvents() {
+		return events;
 	}
 }
