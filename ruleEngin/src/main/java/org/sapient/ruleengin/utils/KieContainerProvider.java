@@ -1,8 +1,7 @@
-package com.sample.api;
+package org.sapient.ruleengin.utils;
 
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
-import org.kie.api.runtime.KieSession;
 
 public class KieContainerProvider 
 {
@@ -16,10 +15,5 @@ public class KieContainerProvider
 		    kContainer = ks.getKieClasspathContainer();
 		}
 		return kContainer;
-	}
-
-	public static KieSession createNewSession(KieContainer kContainer, String kSessionName)
-	{
-		return kContainer.newKieSession(kSessionName);
 	}
 }

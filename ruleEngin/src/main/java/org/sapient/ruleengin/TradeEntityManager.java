@@ -8,10 +8,9 @@ import org.sapient.entites.trade.Trades.Trade;
 import org.sapient.ruleengin.alarm.core.AlarmEventListener;
 import org.sapient.ruleengin.trade.filter.FilterUtils;
 import org.sapient.ruleengin.trade.filter.TradeFiltersHolder;
+import org.sapient.ruleengin.utils.KieContainerProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.sample.api.KieContainerProvider;
 
 @Component
 public class TradeEntityManager 

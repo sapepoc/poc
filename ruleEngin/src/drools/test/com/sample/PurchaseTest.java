@@ -27,8 +27,8 @@ import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.rule.AgendaFilter;
 import org.kie.api.runtime.rule.FactHandle;
 import org.kie.api.runtime.rule.Match;
+import org.sapient.ruleengin.utils.KieContainerProvider;
 
-import com.sample.api.KieContainerProvider;
 import com.sample.model.Purchase;
 
 public class PurchaseTest 

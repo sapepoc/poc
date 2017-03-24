@@ -7,7 +7,6 @@ import java.util.List;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.StatelessKieSession;
-import org.sapient.AppClient;
 import org.sapient.entites.trade.Trades.Trade;
 import org.sapient.ruleengin.trade.filter.CompanyFilter;
 import org.sapient.ruleengin.trade.filter.DateFilter;
@@ -15,8 +14,9 @@ import org.sapient.ruleengin.trade.filter.FilterUtils;
 import org.sapient.ruleengin.trade.filter.QuantityFilter;
 import org.sapient.ruleengin.trade.filter.SecuirtyFilter;
 import org.sapient.ruleengin.trade.filter.TradeFilter;
+import org.sapient.ruleengin.utils.KieContainerProvider;
+import org.sapient.ruleengin.utils.MockTradeDataProvider;
 
-import com.sample.api.KieContainerProvider;
 import com.sample.model.Counter;
 import com.sample.model.Product;
 import com.sample.model.ProductType;
@@ -41,7 +41,7 @@ public class DroolsTest
 		KieContainer kieContainer = KieContainerProvider.createKieContainer();
 		StatelessKieSession statelessKieSession = kieContainer.newStatelessKieSession("ksession-rules-trade");
 		
-		List<List<Trade>> filter = FilterUtils.filter(AppClient.createDummyTrades(), createDummyTradeFilter());
+		List<List<Trade>> filter = FilterUtils.filter(MockTradeDataProvider.createDummyTrades(), createDummyTradeFilter());
 		System.out.println(filter.size());
 		for (List<Trade> trades : filter) 
 		{
