@@ -4,13 +4,13 @@ package com.rules.counter
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import org.sapient.trade.WashTradeMap;
-import org.sapient.trade.WashTrade;
-import org.sapient.trade.model.Trade;
-import org.sapient.trade.model.TradeType;
-import org.sapient.trade.TradeIdentifier;
-import org.sapient.trade.WashTradeIdentifier;
-import org.sapient.trade.TradeHolder;
+import org.sapient.ruleengin.trade.WashTradeMap;
+import org.sapient.ruleengin.trade.WashTrade;
+import org.sapient.entites.trade.Trades.Trade;
+import org.sapient.ruleengin.trade.model.TradeType;
+import org.sapient.ruleengin.trade.TradeIdentifier
+import org.sapient.ruleengin.trade.WashTradeIdentifier;
+import org.sapient.ruleengin.trade.TradeHolder;
 
 
 rule "Raised a alarm when a wash tarde detect"

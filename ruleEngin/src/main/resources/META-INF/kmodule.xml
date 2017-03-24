@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kmodule xmlns="http://jboss.org/kie/6.0.0/kmodule">
 
-    <kbase name="rules-trade" packages="rules.trade.wash">
-        <ksession name="ksession-rules-trade" type="stateless"/>
+	<kbase name="rules-trade-normal" packages="rules.trade.normal">
+        <ksession name="ksession-rules-trade-normal" type="stateless"/>
+    </kbase>
+    <kbase name="rules-trade-wash" packages="rules.trade.wash">
+        <ksession name="ksession-rules-trade-wash" type="stateless"/>
+    </kbase>
+    <kbase name="rules-product" packages="rules.product">
+        <ksession name="ksession-rules-product"/>
     </kbase>
     <kbase name="rules" packages="rules">
         <ksession name="ksession-rules"/>
@@ -13,4 +19,9 @@
     <kbase name="process" packages="process">
         <ksession name="ksession-process"/>
     </kbase>
+    
+     <kbase name="rules-fire" packages="rules.fireAlarm">
+        <ksession name="ksession-rules-fire"/>
+    </kbase>
+    
 </kmodule>

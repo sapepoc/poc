@@ -8,14 +8,13 @@ import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.StatelessKieSession;
 import org.sapient.AppClient;
-import org.sapient.trade.filter.CompanyFilter;
-import org.sapient.trade.filter.DateFilter;
-import org.sapient.trade.filter.FilterUtils;
-import org.sapient.trade.filter.QuantityFilter;
-import org.sapient.trade.filter.SecuirtyFilter;
-import org.sapient.trade.filter.TradeFilter;
-import org.sapient.trade.model.Trade;
-import org.sapient.trade.model.TradeType;
+import org.sapient.entites.trade.Trades.Trade;
+import org.sapient.ruleengin.trade.filter.CompanyFilter;
+import org.sapient.ruleengin.trade.filter.DateFilter;
+import org.sapient.ruleengin.trade.filter.FilterUtils;
+import org.sapient.ruleengin.trade.filter.QuantityFilter;
+import org.sapient.ruleengin.trade.filter.SecuirtyFilter;
+import org.sapient.ruleengin.trade.filter.TradeFilter;
 
 import com.sample.api.KieContainerProvider;
 import com.sample.model.Counter;
@@ -48,16 +47,6 @@ public class DroolsTest
 		{
 			statelessKieSession.execute(trades);
 		}
-		
-		List<Trade> trades  = new ArrayList<Trade>();
-		trades.add(new Trade(TradeType.BUY, "Sapient", "Airtel", 40, 10, System.currentTimeMillis()));
-		trades.add(new Trade(TradeType.SELL, "Sapient", "Airtel", 40, 10, System.currentTimeMillis()));
-		trades.add(new Trade(TradeType.BUY, "Siemens", "Idea", 52, 8, System.currentTimeMillis()));
-		trades.add(new Trade(TradeType.BUY, "HCL", "Airtel", 50, 6, System.currentTimeMillis()));
-		trades.add(new Trade(TradeType.BUY, "HCL", "Airtel", 50, 6, System.currentTimeMillis()));
-		trades.add(new Trade(TradeType.SELL, "HCL", "Airtel", 50, 6, System.currentTimeMillis()));
-		
-		
 	}
 	
 	private static void accumulateTest()

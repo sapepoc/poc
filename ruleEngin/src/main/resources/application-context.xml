@@ -11,24 +11,24 @@
 	http://www.springframework.org/schema/aop 
 	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
+	<import resource="camel-config.xml" />
 	<context:annotation-config />
 	<context:property-placeholder location="classpath:application.properties" />
 	<context:component-scan base-package="org.sapient" />
 
 
-	<bean name="companyFilter" class="org.sapient.trade.filter.CompanyFilter" />
-	<bean name="secuirtyFilter" class="org.sapient.trade.filter.SecuirtyFilter" />
-	<bean name="dateFilter" class="org.sapient.trade.filter.DateFilter" />
-	<bean name="quantityFilter" class="org.sapient.trade.filter.QuantityFilter" />
-	<bean name="tradeTypeFilter" class="org.sapient.trade.filter.TradeTypeFilter" />
+	<bean name="companyFilter" class="org.sapient.ruleengin.trade.filter.CompanyFilter" />
+	<bean name="secuirtyFilter" class="org.sapient.ruleengin.trade.filter.SecuirtyFilter" />
+	<bean name="dateFilter" class="org.sapient.ruleengin.trade.filter.DateFilter" />
+	<bean name="quantityFilter" class="org.sapient.ruleengin.trade.filter.QuantityFilter" />
+	<bean name="tradeTypeFilter" class="org.sapient.ruleengin.trade.filter.TradeTypeFilter" />
 
-	<bean name="tradeFiltersHolder" class="org.sapient.trade.filter.TradeFiltersHolder">
+	<bean name="tradeFiltersHolder" class="org.sapient.ruleengin.trade.filter.TradeFiltersHolder">
 		<constructor-arg>
 			<list>
 				<ref bean="companyFilter" />
 				<ref bean="secuirtyFilter" />
 				<ref bean="dateFilter" />
-				<ref bean="quantityFilter" />
 			</list>
 		</constructor-arg>
 	</bean>
