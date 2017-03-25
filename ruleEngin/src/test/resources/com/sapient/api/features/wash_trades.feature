@@ -1,3 +1,4 @@
+@WashTradeRule @COG @RMG
 Feature: Wash Trades
 	I want to use this template for my feature file
 
