@@ -7,7 +7,8 @@ import cucumber.api.SnippetType;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(snippets= SnippetType.CAMELCASE, plugin = {"progress"}, monochrome = true)
+@CucumberOptions(snippets= SnippetType.CAMELCASE, plugin = {"progress"}, monochrome = true, 
+tags = {"@dev"})
 public class ApplicationTest {
 
 }

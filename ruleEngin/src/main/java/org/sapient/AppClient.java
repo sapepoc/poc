@@ -23,8 +23,8 @@ public class AppClient
 
 	public static void main(String[] args)
 	{
-		System.setProperty("org.apache.activemq.SERIALIZABLE_PACKAGES","*");
-		System.setProperty("org.apache.activemq.SERIALIZABLE_PACKAGES","*");
+		//System.setProperty("org.apache.activemq.SERIALIZABLE_PACKAGES","*");
+		//System.setProperty("org.apache.activemq.SERIALIZABLE_PACKAGES","*");
 		ConfigurableApplicationContext context = SpringApplication.run(AppClient.class, args);
 		WashTradeRuleEngin washTradeRuleEngin = context.getBean(WashTradeRuleEngin.class);
 		fireRules(washTradeRuleEngin, getFacts());

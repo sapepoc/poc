@@ -1,4 +1,4 @@
-@WashTradeRule @COG @RMG
+@WashTradeRule @dev
 Feature: Wash Trades
 	I want to use this template for my feature file
 
@@ -7,6 +7,6 @@ Given set of trades
 When Wash Trade rule is applied
 Then following response is given
 	| Type | Client | Security | Volume |
-	| Buy  | Sapient| Airtel1   | 40     | 
+	| Buy  | Sapient1| Airtel1   | 40     | 
 	| Buy  | HCL1    | Airtel1   | 50     | 
 	And Wash trade event is generated
