@@ -6,6 +6,6 @@ Given set of trades
 When Wash Trade rule is applied
 Then following response is given
 	| Type | Client | Security | Volume |
-	| Buy  | Sapient| Airtel   | 40     | 
-	| Buy  | HCL    | Airtel   | 50     | 
+	| Buy  | Sapient| Airtel1   | 40     | 
+	| Buy  | HCL1    | Airtel1   | 50     | 
 	And Wash trade event is generated

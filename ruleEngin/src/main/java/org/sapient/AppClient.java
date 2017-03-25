@@ -10,7 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
-//@ImportResource({ "classpath:application-context.xml" })
 public class AppClient
 {
 	public static void fireRules(WashTradeRuleEngin washTradeRuleEngin, List<Trade> trades)
@@ -18,12 +17,6 @@ public class AppClient
 		washTradeRuleEngin.fireRulesWithStatelessSession(trades);
 	}
 	
-	/*private static void tradeFilterTest(FactProcessor<WashTrade> factProcessor)
-	{
-		new TradeRuleEngin().fireRulesWithStatelessSession(factProcessor, "ksession-rules-trade-wash", 
-				getFacts());
-	}*/
-
 	public static List<Trade> getFacts() {
 		return MockTradeDataProvider.createDummyTrades();
 	}
@@ -33,7 +26,6 @@ public class AppClient
 		System.setProperty("org.apache.activemq.SERIALIZABLE_PACKAGES","*");
 		System.setProperty("org.apache.activemq.SERIALIZABLE_PACKAGES","*");
 		ConfigurableApplicationContext context = SpringApplication.run(AppClient.class, args);
-//		tradeFilterTest(context.getBean(WashTradeProcessor.class));
 		WashTradeRuleEngin washTradeRuleEngin = context.getBean(WashTradeRuleEngin.class);
 		fireRules(washTradeRuleEngin, getFacts());
 	}

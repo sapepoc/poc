@@ -9,21 +9,15 @@ import org.sapient.ruleengin.trade.WashTrade;
 
 public final class WashTradeEvent implements AlarmEvent
 {
-	private List<WashTrade> washTrades;
-
-	public WashTradeEvent() 
+	private WashTrade washTrade;
+	public WashTradeEvent(WashTrade washTrade) 
 	{
-		this.washTrades = new ArrayList<WashTrade>();
+		this.washTrade = washTrade;
 	}
 
-	public void addWashTrade(WashTrade washTrade) 
+	public WashTrade getWashTrade() 
 	{
-		this.washTrades.add(washTrade);
-	}
-	
-	public List<WashTrade> getWashTrade() 
-	{
-		return washTrades;
+		return washTrade;
 	}
 	
 	@Override
@@ -34,7 +28,7 @@ public final class WashTradeEvent implements AlarmEvent
 
 	@Override
 	public String toString() {
-		return "WashTradeEvent [washTrades=" + washTrades + "]";
+		return "WashTradeEvent [washTrade=" + washTrade + "]";
 	}
 	
 }

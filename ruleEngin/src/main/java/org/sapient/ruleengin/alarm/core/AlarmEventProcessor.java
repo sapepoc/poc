@@ -16,7 +16,7 @@ public class AlarmEventProcessor implements AlarmEventProvider, AlarmEventListen
 		topicToObservers = new HashMap<>();
 	}
 
-	public void addEvent(AlarmEvent alarmEvent)
+	public void fireEvent(AlarmEvent alarmEvent)
 	{
 		List<AlarmEventObserver<AlarmEvent>> observers = topicToObservers.get(alarmEvent.getType());
 		for (AlarmEventObserver<AlarmEvent> observer : observers) 

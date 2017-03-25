@@ -28,9 +28,9 @@ public class WashTradeProcessor implements FactProcessor<WashTrade>
 		//if(!washTradeHolder.contains(washTrade.getBuy().getId()) && !washTradeHolder.contains(washTrade.getSell().getId())){
 			washTradeHolder.add(washTrade.getBuy().getId());
 			washTradeHolder.add(washTrade.getSell().getId());
-			WashTradeEvent washTradeEvent = new WashTradeEvent();
-			washTradeEvent.addWashTrade(washTrade);
-			alarmEventListener.addEvent(washTradeEvent);
+			WashTradeEvent washTradeEvent = new WashTradeEvent(washTrade);
+			System.out.println("Created WashTradeEvent---->>>>> "+ washTrade);
+			alarmEventListener.fireEvent(washTradeEvent);
 		//}
 	}
 }
