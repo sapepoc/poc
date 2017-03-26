@@ -1,8 +1,5 @@
 package org.sapient.ruleengin.trade.alarm;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.sapient.ruleengin.alarm.core.AlarmEvent;
 import org.sapient.ruleengin.alarm.core.Topic;
 import org.sapient.ruleengin.trade.WashTrade;

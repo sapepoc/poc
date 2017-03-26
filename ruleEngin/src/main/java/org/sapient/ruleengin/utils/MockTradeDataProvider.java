@@ -23,18 +23,46 @@ public class MockTradeDataProvider
 		return trade;
 	}
 	
+	public static List<Trade> createDummyTradeDataWithoutAnyWashTrade()
+	{
+		List<Trade> trades  = new ArrayList<Trade>();
+		long currentTimeMillis = System.currentTimeMillis();
+		trades.add(createTrade(8, TradeType.BUY.toString(), "Sapient", "Airtel", 60, 10, currentTimeMillis));
+		trades.add(createTrade(9, TradeType.BUY.toString(), "Sapient", "Airtel", 60, 10, currentTimeMillis));
+		trades.add(createTrade(3, TradeType.BUY.toString(), "Siemens", "Idea", 52, 8, currentTimeMillis));
+		trades.add(createTrade(13, TradeType.BUY.toString(), "Siemens", "Idea", 52, 8, currentTimeMillis));
+		trades.add(createTrade(4, TradeType.BUY.toString(), "HCL", "Airtel", 50, 6, currentTimeMillis));
+		trades.add(createTrade(5, TradeType.BUY.toString(), "HCL", "Airtel", 50, 6, currentTimeMillis));
+		return trades;
+	}
+	public static List<Trade> createDummyTradeDataWithOneWashTrade()
+	{
+		List<Trade> trades  = new ArrayList<Trade>();
+		long currentTimeMillis = System.currentTimeMillis();
+		trades.add(createTrade(8, TradeType.BUY.toString(), "Sapient", "Airtel", 60, 10, currentTimeMillis));
+		trades.add(createTrade(9, TradeType.BUY.toString(), "Sapient", "Airtel", 60, 10, currentTimeMillis));
+		trades.add(createTrade(3, TradeType.BUY.toString(), "Siemens", "Idea", 52, 8, currentTimeMillis));
+		trades.add(createTrade(13, TradeType.BUY.toString(), "Siemens", "Idea", 52, 8, currentTimeMillis));
+		trades.add(createTrade(4, TradeType.BUY.toString(), "HCL", "Airtel", 50, 6, currentTimeMillis));
+		trades.add(createTrade(5, TradeType.BUY.toString(), "HCL", "Airtel", 50, 6, currentTimeMillis));
+		trades.add(createTrade(6, TradeType.SELL.toString(), "HCL", "Airtel", 50, 6, currentTimeMillis));
+		
+		return trades;
+	}
+	
 	public static List<Trade> createDummyTrades()
 	{
 		List<Trade> trades  = new ArrayList<Trade>();
-		trades.add(createTrade(7, TradeType.SELL.toString(), "Sapient1", "Airtel", 60, 10, System.currentTimeMillis()));
-		trades.add(createTrade(8, TradeType.BUY.toString(), "Sapient1", "Airtel", 60, 10, System.currentTimeMillis()));
-		trades.add(createTrade(9, TradeType.BUY.toString(), "Sapient1", "Airtel", 60, 10, System.currentTimeMillis()));
-		trades.add(createTrade(3, TradeType.BUY.toString(), "Siemens", "Idea", 52, 8, System.currentTimeMillis()));
-		trades.add(createTrade(13, TradeType.BUY.toString(), "Siemens", "Idea", 52, 8, System.currentTimeMillis()));
-		trades.add(createTrade(4, TradeType.BUY.toString(), "HCL", "Airtel", 50, 6, System.currentTimeMillis()));
-		trades.add(createTrade(5, TradeType.BUY.toString(), "HCL", "Airtel", 50, 6, System.currentTimeMillis()));
-		trades.add(createTrade(6, TradeType.SELL.toString(), "HCL", "Airtel", 50, 6, System.currentTimeMillis()));
-		trades.add(createTrade(12, TradeType.SELL.toString(), "Siemens", "Idea", 52, 8, System.currentTimeMillis()));
+		long currentTimeMillis = System.currentTimeMillis();
+		trades.add(createTrade(7, TradeType.SELL.toString(), "Sapient1", "Airtel", 60, 10, currentTimeMillis));
+		trades.add(createTrade(8, TradeType.BUY.toString(), "Sapient1", "Airtel", 60, 10, currentTimeMillis));
+		trades.add(createTrade(9, TradeType.BUY.toString(), "Sapient1", "Airtel", 60, 10, currentTimeMillis));
+		trades.add(createTrade(3, TradeType.BUY.toString(), "Siemens", "Idea", 52, 8, currentTimeMillis));
+		trades.add(createTrade(13, TradeType.BUY.toString(), "Siemens", "Idea", 52, 8, currentTimeMillis));
+		trades.add(createTrade(4, TradeType.BUY.toString(), "HCL", "Airtel", 50, 6, currentTimeMillis));
+		trades.add(createTrade(5, TradeType.BUY.toString(), "HCL", "Airtel", 50, 6, currentTimeMillis));
+		trades.add(createTrade(6, TradeType.SELL.toString(), "HCL", "Airtel", 50, 6, currentTimeMillis));
+		trades.add(createTrade(12, TradeType.SELL.toString(), "Siemens", "Idea", 52, 8, currentTimeMillis));
 		
 		return trades;
 	}

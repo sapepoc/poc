@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class WashTradeEventObserver implements AlarmEventObserver<AlarmEvent>
 {
+	@SuppressWarnings("unused")
 	private AlarmEventProvider alarmEventProvider;
 	private List<AlarmEvent> events = new ArrayList<>(); 
 	
@@ -32,11 +33,12 @@ public class WashTradeEventObserver implements AlarmEventObserver<AlarmEvent>
 	@Override
 	public void notify(AlarmEvent alarmEvent) 
 	{
-		System.out.println("WashTradeEvent event received="+alarmEvent);
+		System.out.println("WashTradeEvent event received<<<<"+alarmEvent);
 		events.add(alarmEvent);
 	}
 	
-	public List<AlarmEvent> getAlarmEvents() {
+	public List<AlarmEvent> getAlarmEvents() 
+	{
 		return events;
 	}
 }

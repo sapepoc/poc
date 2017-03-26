@@ -14,21 +14,24 @@
 	<context:property-placeholder location="classpath:application.properties" />
 	<context:component-scan base-package="org.sapient" />
 
-
-	<bean name="companyFilter" class="org.sapient.ruleengin.trade.filter.CompanyFilter" />
-	<bean name="secuirtyFilter" class="org.sapient.ruleengin.trade.filter.SecuirtyFilter" />
-	<bean name="dateFilter" class="org.sapient.ruleengin.trade.filter.DateFilter" />
-	<bean name="quantityFilter" class="org.sapient.ruleengin.trade.filter.QuantityFilter" />
-	<bean name="tradeTypeFilter" class="org.sapient.ruleengin.trade.filter.TradeTypeFilter" />
-
-	<bean name="tradeFiltersHolder" class="org.sapient.ruleengin.trade.filter.TradeFiltersHolder">
-		<constructor-arg>
-			<list>
-				<ref bean="companyFilter" />
-				<ref bean="secuirtyFilter" />
-				<ref bean="dateFilter" />
-			</list>
+	<bean name="washTradeRuleApplier" class="org.sapient.ruleengin.WashTradeRuleApplier">
+		<constructor-arg> 
+			<ref bean="washTradeProcessor" /> 
+		</constructor-arg>
+		<constructor-arg type = "java.lang.String" value = "ksession-rules-trade-wash"/>
+		<constructor-arg> 
+			<set>
+				<value>Wash trade rule</value>
+			</set> 
 		</constructor-arg>
 	</bean>
-
+	
+	<bean name="ruleEngin" class="org.sapient.ruleengin.RuleEnginImpl">
+		<constructor-arg>
+			<map>
+				<entry key = "#{T(org.sapient.ruleengin.facts.RuleType).WASH_TRADE_RULE}" value-ref = "washTradeRuleApplier"/>
+			</map>
+		</constructor-arg>
+	</bean>
+	
 </beans>

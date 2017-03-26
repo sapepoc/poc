@@ -1,4 +1,4 @@
-package org.sapient;
+package org.sapient.ruleengin.facts;
 
 public interface FactProcessor<F extends Fact>
 {

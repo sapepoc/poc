@@ -1,7 +1,4 @@
-package org.sapient;
-
-import java.util.HashSet;
-import java.util.Set;
+package org.sapient.ruleengin.facts;
 
 import org.sapient.ruleengin.alarm.core.AlarmEventListener;
 import org.sapient.ruleengin.trade.WashTrade;
@@ -13,24 +10,17 @@ import org.springframework.stereotype.Component;
 public class WashTradeProcessor implements FactProcessor<WashTrade>
 {
 	private AlarmEventListener alarmEventListener;
-	private Set<Integer> washTradeHolder;
-	
+
 	@Autowired
 	public WashTradeProcessor(AlarmEventListener alarmEventListener)
 	{
 		this.alarmEventListener = alarmEventListener;
-		washTradeHolder = new HashSet<>();
 	}
-	
+
 	@Override
 	public void process(WashTrade washTrade) 
 	{
-		//if(!washTradeHolder.contains(washTrade.getBuy().getId()) && !washTradeHolder.contains(washTrade.getSell().getId())){
-			washTradeHolder.add(washTrade.getBuy().getId());
-			washTradeHolder.add(washTrade.getSell().getId());
-			WashTradeEvent washTradeEvent = new WashTradeEvent(washTrade);
-			System.out.println("Created WashTradeEvent---->>>>> "+ washTrade);
-			alarmEventListener.fireEvent(washTradeEvent);
-		//}
+		WashTradeEvent washTradeEvent = new WashTradeEvent(washTrade);
+		alarmEventListener.fireEvent(washTradeEvent);
 	}
 }

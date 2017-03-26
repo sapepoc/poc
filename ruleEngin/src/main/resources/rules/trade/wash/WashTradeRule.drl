@@ -2,21 +2,24 @@
 
 package com.rules.counter
 
-import org.sapient.entites.trade.Trades.Trade;
+import org.sapient.ruleengin.trade.model.TradeData;
+import org.sapient.ruleengin.trade.model.TradeType;
 import org.sapient.ruleengin.trade.WashTrade;
-import org.sapient.FactProcessor;
+import org.sapient.ruleengin.facts.FactProcessor;
 
 global FactProcessor<Fact> factProcessor;
 rule "Wash trade rule"
 when
-$buyTrade : Trade($security : security, $company : company, $quantity : quantity, tradeType == "BUY")
+$buyTrade : TradeData($security : security, $company : company, $quantity : quantity, 
+tradeType == TradeType.BUY)
 
-$sellTrade : Trade(security == $buyTrade.security
+$sellTrade : TradeData(security == $buyTrade.security
 				&& company == $buyTrade.company 
-				&& tradeType == "SELL"
+				&& tradeType == TradeType.SELL
 				&& quantity == $buyTrade.quantity
-				&& time == $buyTrade.time)
+				&& dateTime == $buyTrade.dateTime)
 then
+System.out.println("********************************************");
 	factProcessor.process(new WashTrade($buyTrade, $sellTrade));
 	delete($buyTrade);
 	delete($sellTrade);
