@@ -1,0 +1,16 @@
+package rules
+
+import org.sapient.ruleengine.trade.model.TradeData;
+import org.sapient.ruleengine.trade.model.TradeType;
+import org.sapient.ruleengine.alarm.core.AlarmEventListener;
+import org.sapient.ruleengine.events.FxTradeEvent;
+import org.sapient.ruleengine.facts.FxTrade;
+
+global  AlarmEventListener alarmEventListener;
+
+rule "Buy Trade Quantity is more than 10"
+when
+	$buyTradeData : TradeData(tradeType == TradeType.BUY && quantity > 10)
+then
+	alarmEventListener.fireEvent(new FxTradeEvent("TradeBuyQuantityRule violation!", new FxTrade($buyTradeData, null)));
+end
