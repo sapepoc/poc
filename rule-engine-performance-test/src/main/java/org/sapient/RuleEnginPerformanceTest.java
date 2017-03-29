@@ -27,7 +27,7 @@ public class RuleEnginPerformanceTest
 		ConfigurableApplicationContext context = startApplication(args);
 		
 		List<TradeData> tradeData = EntityTransformer.externalTradeToInternalTradeData(
-				MockTradeDataProvider.createDummyTrades(50000));
+				MockTradeDataProvider.createDummyTrades(5));
 		
 		RuleEnginService  ruleEnginService = context.getBean(RuleEnginServiceImpl.class);
 		ruleEnginService.register(context.getBean(FxTradeEventObserver.class));
