@@ -37,12 +37,18 @@ public class DroolsRuleEngin extends AbstractRuleEngin
 			@Override
 			public boolean accept(Match match)
 			{
-				System.out.println("Rule will be apply="+match.getRule().getName());
+				//TODO: We can filter rule here
 				return true;
 			}
 		});
 		kieSession.dispose();
 		
 		return fireRules;
+	}
+
+	@Override
+	protected RuleEnginType ruleEnginType()
+	{
+		return RuleEnginType.DROOLS;
 	}
 }

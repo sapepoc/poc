@@ -6,15 +6,20 @@ import org.sapient.ruleengine.alarm.core.AlarmEvent;
 import org.sapient.ruleengine.alarm.core.AlarmEventObserver;
 import org.sapient.ruleengine.alarm.core.AlarmEventProcessor;
 import org.sapient.ruleengine.utils.CommonUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class AbstractRuleEngin implements RuleEngin
 {
+	private static final Logger LOGGER = LoggerFactory.getLogger(AbstractRuleEngin.class);
 	protected AlarmEventProcessor alarmEventProcessor;
 
 	public AbstractRuleEngin(AlarmEventProcessor alarmEventProcessor)
 	{
 		this.alarmEventProcessor = alarmEventProcessor;
 	}
+	
+	protected abstract RuleEnginType ruleEnginType();
 	
 	@Override
 	public void registerEventListener(AlarmEventObserver<AlarmEvent> observer)
@@ -41,8 +46,7 @@ public abstract class AbstractRuleEngin implements RuleEngin
 		PerformanceReport performanceReport =  
 				new PerformanceReport(fireRules, timeTakenInMillis, CommonUtils.bytesToMegabytes(memoryUsedInKB));
 		
-		System.out.println(performanceReport);
-	
+		LOGGER.info("Performance Details:: used rule engine:{} ,{}", ruleEnginType(), performanceReport);
 	}
 	
 	protected abstract <T> int fireRules0(List<T> entities, List<RuleData> ruleDatas);

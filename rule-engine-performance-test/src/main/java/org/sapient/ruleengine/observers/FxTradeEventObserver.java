@@ -1,4 +1,4 @@
-package org.sapient.ruleengine.ovservers;
+package org.sapient.ruleengine.observers;
 
 import java.util.ArrayList;
 import java.util.List;

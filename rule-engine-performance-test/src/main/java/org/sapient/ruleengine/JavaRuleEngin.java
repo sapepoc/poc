@@ -31,4 +31,10 @@ public class JavaRuleEngin extends AbstractRuleEngin
 		return fireRules;
 	}
 	
+	@Override
+	protected RuleEnginType ruleEnginType()
+	{
+		return RuleEnginType.JAVA;
+	}
+	
 }

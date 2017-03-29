@@ -23,6 +23,24 @@ public class MockTradeDataProvider
 		return trade;
 	}
 	
+	public static List<Trade> createDummyTrades(int noOfTrades)
+	{
+		List<Trade> trades  = new ArrayList<Trade>();
+		int buyQuantity = 10;
+		int sellQuantity = 500;
+		int buyAmount = 1000;
+		int sellAmount = 5000;
+		long currentTimeMillis = System.currentTimeMillis();
+		for(int i = 1 ; i < noOfTrades; i++)
+		{
+			trades.add(createTrade(i, TradeType.BUY.toString(), "Security_"+i, "Company_"+i, 
+					buyQuantity+i, buyAmount+i, currentTimeMillis));
+			++i;
+			trades.add(createTrade(i, TradeType.SELL.toString(), "Security_"+i, "Company_"+i, 
+					sellQuantity+i, sellAmount+i, currentTimeMillis));
+		}
+		return trades;
+	}
 	
 	public static List<Trade> createTwoDummyTrades()
 	{

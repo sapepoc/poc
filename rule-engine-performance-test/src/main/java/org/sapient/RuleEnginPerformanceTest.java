@@ -5,8 +5,9 @@ import java.util.List;
 
 import org.sapient.ruleengine.RuleEnginService;
 import org.sapient.ruleengine.RuleEnginServiceImpl;
-import org.sapient.ruleengine.ovservers.FxTradeEventObserver;
+import org.sapient.ruleengine.observers.FxTradeEventObserver;
 import org.sapient.ruleengine.trade.model.TradeData;
+import org.sapient.ruleengine.utils.CommonUtils;
 import org.sapient.ruleengine.utils.EntityTransformer;
 import org.sapient.ruleengine.utils.MockTradeDataProvider;
 import org.springframework.boot.SpringApplication;
@@ -25,11 +26,12 @@ public class RuleEnginPerformanceTest
 	{
 		ConfigurableApplicationContext context = startApplication(args);
 		
-		List<TradeData> tradeData = EntityTransformer.externalTradeToInternalTradeData(MockTradeDataProvider.createTwoDummyTrades());
+		List<TradeData> tradeData = EntityTransformer.externalTradeToInternalTradeData(
+				MockTradeDataProvider.createDummyTrades(50000));
 		
 		RuleEnginService  ruleEnginService = context.getBean(RuleEnginServiceImpl.class);
 		ruleEnginService.register(context.getBean(FxTradeEventObserver.class));
-		
+		CommonUtils.asleep(10000);
 		ruleEnginService.applyRule(tradeData);
 	}
 }

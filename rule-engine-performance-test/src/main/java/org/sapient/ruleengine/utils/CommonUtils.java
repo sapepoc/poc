@@ -39,4 +39,16 @@ public class CommonUtils
 		return value;
 	}
 
+	public static void asleep(int millis) 
+	{
+		try
+		{
+			Thread.sleep(millis);
+		} 
+		catch (InterruptedException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
 }
