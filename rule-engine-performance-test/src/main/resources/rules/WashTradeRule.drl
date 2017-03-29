@@ -1,0 +1,27 @@
+//created on: Mar 20, 2017
+
+package rules
+
+import org.sapient.ruleengine.trade.model.TradeData;
+import org.sapient.ruleengine.trade.model.TradeType;
+import org.sapient.ruleengine.alarm.core.AlarmEventListener;
+import org.sapient.ruleengine.events.FxTradeEvent;
+import org.sapient.ruleengine.facts.FxTrade;
+
+global  AlarmEventListener alarmEventListener;
+
+rule "Wash trade rule"
+when
+$buyTrade : TradeData(tradeType == TradeType.BUY)
+
+$sellTrade : TradeData(security == $buyTrade.security
+				&& company == $buyTrade.company 
+				&& tradeType == TradeType.SELL
+				&& quantity == $buyTrade.quantity
+				&& dateTime == $buyTrade.dateTime)
+then
+	alarmEventListener.fireEvent(new FxTradeEvent("Wash trade rule - violation!", new FxTrade($buyTrade, $sellTrade)));
+	delete($buyTrade);
+	delete($sellTrade);
+end
+

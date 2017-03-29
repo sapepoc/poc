@@ -2,22 +2,23 @@ package org.sapient.ruleengine;
 
 import java.util.List;
 
-import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.rule.AgendaFilter;
 import org.kie.api.runtime.rule.Match;
 import org.sapient.ruleengine.alarm.core.AlarmEventProcessor;
-import org.sapient.ruleengine.utils.KieContainerProvider;
-import org.sapient.ruleengine.utils.KieSessionHelper;
+import org.sapient.ruleengine.drools.DroolsManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DroolsRuleEngin extends AbstractRuleEngin
 {
-	private KieContainer kieContainer;
+	private static Logger LOGGER = LoggerFactory.getLogger(DroolsRuleEngin.class);
+	private DroolsManager droolsManager;
 	
 	public DroolsRuleEngin(AlarmEventProcessor alarmEventProcessor)
 	{
 		super(alarmEventProcessor);
-		kieContainer = KieContainerProvider.createKieContainer();
+		droolsManager = new DroolsManager();
 	}
 
 	@Override
@@ -25,15 +26,19 @@ public class DroolsRuleEngin extends AbstractRuleEngin
 	{
 		int fireRules = 0;
 
-		KieSession kieSession = KieSessionHelper.createSession(kieContainer, "baseKSession-rules");
+		KieSession kieSession = droolsManager.createSession("baseKSession-rules");
 		kieSession.setGlobal("alarmEventListener", alarmEventProcessor);
 
+		long startTime = System.currentTimeMillis();
+		LOGGER.info("Facts insertion started. total facts={}", entities.size());
 		for(T entity: entities)
 		{
-			kieSession.insert(entity);
+			droolsManager.insertFacts(kieSession, entity);
 		}
-		fireRules = kieSession.fireAllRules(new AgendaFilter() {
-
+		LOGGER.info("Facts insertion fininsihed,  time taken in millis={}"+ (System.currentTimeMillis() - startTime));
+		
+		droolsManager.fireAllRules(kieSession, new AgendaFilter() 
+		{
 			@Override
 			public boolean accept(Match match)
 			{
@@ -41,7 +46,8 @@ public class DroolsRuleEngin extends AbstractRuleEngin
 				return true;
 			}
 		});
-		kieSession.dispose();
+
+		droolsManager.disposeSession(kieSession);
 		
 		return fireRules;
 	}

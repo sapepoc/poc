@@ -1,0 +1,21 @@
+package rules
+
+import org.sapient.ruleengine.trade.model.TradeData;
+import org.sapient.ruleengine.trade.model.TradeType;
+import org.sapient.ruleengine.alarm.core.AlarmEventListener;
+import org.sapient.ruleengine.events.FxTradeEvent;
+import org.sapient.ruleengine.facts.FxTrade;
+
+global  AlarmEventListener alarmEventListener;
+
+/**rule "Count number of sell trades for same compnay and security is more than 48"
+when
+$sellTrade : TradeData($security : security, $company : company, tradeType == TradeType.SELL)
+
+	 $count : Number($count > 48) from accumulate(
+         $tradeData : TradeData(security == $sellTrade.security
+				&& company == $sellTrade.company && tradeType == TradeType.SELL),
+         count( $tradeData ) )
+then
+	alarmEventListener.fireEvent(new FxTradeEvent("Count number of sell trades for same compnay and security is more than 48 - violation!", new FxTrade(null, $sellTrade)));
+end*/

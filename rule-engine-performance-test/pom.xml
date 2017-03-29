@@ -85,6 +85,13 @@
 			<artifactId>drools-core</artifactId>
 			<version>${runtime.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-reteoo</artifactId>
+			<version>${runtime.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.drools</groupId>
 			<artifactId>drools-decisiontables</artifactId>
@@ -95,12 +102,6 @@
 			<groupId>org.jbpm</groupId>
 			<artifactId>jbpm-test</artifactId>
 			<version>${runtime.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.sapient.entities</groupId>
-			<artifactId>coreEntities</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
 		<!-- Cucumber Dependencies -->

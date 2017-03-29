@@ -8,7 +8,6 @@ import org.sapient.ruleengine.RuleEnginServiceImpl;
 import org.sapient.ruleengine.observers.FxTradeEventObserver;
 import org.sapient.ruleengine.trade.model.TradeData;
 import org.sapient.ruleengine.utils.CommonUtils;
-import org.sapient.ruleengine.utils.EntityTransformer;
 import org.sapient.ruleengine.utils.MockTradeDataProvider;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,14 +23,14 @@ public class RuleEnginPerformanceTest
 	
 	public static void main(String[] args) throws IOException
 	{
+		//System.setProperty("drools.ruleEngine", "reteoo");
 		ConfigurableApplicationContext context = startApplication(args);
 		
-		List<TradeData> tradeData = EntityTransformer.externalTradeToInternalTradeData(
-				MockTradeDataProvider.createDummyTrades(5));
+		List<TradeData> tradeData = MockTradeDataProvider.createAllDummyWashTrades(2000);
 		
 		RuleEnginService  ruleEnginService = context.getBean(RuleEnginServiceImpl.class);
 		ruleEnginService.register(context.getBean(FxTradeEventObserver.class));
-		CommonUtils.asleep(10000);
+		CommonUtils.asleep(100);
 		ruleEnginService.applyRule(tradeData);
 	}
 }

@@ -6,7 +6,9 @@ public enum RuleMapping
 	RULE1("trade.buy.amount.rule", TradeBuyAmountRule.class),
 	RULE2("trade.buy.quantity.rule", TradeBuyQuantityRule.class),
 	RULE3("trade.sell.amount.rule", TradeSellAmountRule.class),
-	RULE4("trade.sell.quantity.rule", TradeSellQuantityRule.class);
+	RULE4("trade.sell.quantity.rule", TradeSellQuantityRule.class),
+	RULE5("trade.wash.rule", WashTradeRule.class);
+	
 	
 	private RuleMapping(String ruleName, Class<?> clazz)
 	{
