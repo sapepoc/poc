@@ -1,0 +1,18 @@
+package rules
+
+import org.sapient.ruleengine.trade.model.TradeData;
+import org.sapient.ruleengine.trade.model.TradeType;
+import org.sapient.ruleengine.alarm.core.AlarmEventListener;
+import org.sapient.ruleengine.events.FxTradeEvent;
+import org.sapient.ruleengine.facts.FxTrade;
+
+global  AlarmEventListener alarmEventListener;
+
+rule "Count of Buy Trade is more than 48"
+when
+	 $count : Number($count > 48) from accumulate(
+         $tradeData : TradeData(tradeType == TradeType.BUY),
+         count( $tradeData ) )
+then
+	alarmEventListener.fireEvent(new FxTradeEvent("NumberOfBuyTradeRule violation!", new FxTrade(null, null)));
+end
