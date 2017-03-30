@@ -11,7 +11,11 @@ public class DroolsManager
 	private static final String DEFAULT_SESSION = "baseKSession-rules";
 	private KieContainer kieContainer;
 
-	public DroolsManager(){}
+	public DroolsManager()
+	{
+		//TODO:
+		getKieContainer();
+	}
 	
 	private KieContainer getKieContainer()
 	{
@@ -48,9 +52,9 @@ public class DroolsManager
 		session.fireAllRules();
 	}
 	
-	public void fireAllRules(KieSession session, AgendaFilter agendaFilter)
+	public int fireAllRules(KieSession session, AgendaFilter agendaFilter)
 	{
-		session.fireAllRules(agendaFilter);
+		return session.fireAllRules(agendaFilter);
 	}
 
 	public void disposeSession(KieSession kieSession) 

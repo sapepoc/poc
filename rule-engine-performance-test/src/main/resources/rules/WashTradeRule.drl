@@ -12,8 +12,8 @@ global  AlarmEventListener alarmEventListener;
 
 rule "Wash trade rule"
 when
-$buyTrade : TradeData(tradeType == TradeType.BUY)
 
+$buyTrade : TradeData(tradeType == TradeType.BUY)
 $sellTrade : TradeData(security == $buyTrade.security
 				&& company == $buyTrade.company 
 				&& tradeType == TradeType.SELL

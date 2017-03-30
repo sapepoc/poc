@@ -7,6 +7,8 @@ import org.kie.api.runtime.rule.AgendaFilter;
 import org.kie.api.runtime.rule.Match;
 import org.sapient.ruleengine.alarm.core.AlarmEventProcessor;
 import org.sapient.ruleengine.drools.DroolsManager;
+import org.sapient.ruleengine.report.PerformanceMonitor;
+import org.sapient.ruleengine.report.PerformanceReport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,19 +27,21 @@ public class DroolsRuleEngin extends AbstractRuleEngin
 	protected <T> int fireRules0(List<T> entities, List<RuleData> ruleDatas) 
 	{
 		int fireRules = 0;
-
+		
+		PerformanceMonitor monitor = new PerformanceMonitor();
+		monitor.startMonitoring();
 		KieSession kieSession = droolsManager.createSession("baseKSession-rules");
 		kieSession.setGlobal("alarmEventListener", alarmEventProcessor);
-
-		long startTime = System.currentTimeMillis();
+		PerformanceReport performanceReport = monitor.stopMonitoring();
+		System.out.println("*******************session creation:::performanceReport="+ performanceReport);
+		
 		LOGGER.info("Facts insertion started. total facts={}", entities.size());
 		for(T entity: entities)
 		{
 			droolsManager.insertFacts(kieSession, entity);
 		}
-		LOGGER.info("Facts insertion fininsihed,  time taken in millis={}"+ (System.currentTimeMillis() - startTime));
 		
-		droolsManager.fireAllRules(kieSession, new AgendaFilter() 
+		fireRules = droolsManager.fireAllRules(kieSession, new AgendaFilter() 
 		{
 			@Override
 			public boolean accept(Match match)
@@ -48,7 +52,7 @@ public class DroolsRuleEngin extends AbstractRuleEngin
 		});
 
 		droolsManager.disposeSession(kieSession);
-		
+
 		return fireRules;
 	}
 

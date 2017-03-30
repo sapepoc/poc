@@ -18,7 +18,7 @@ public class MockTradeDataProvider
 		long currentTimeMillis = System.currentTimeMillis();
 		
 		TradeType tradeType = TradeType.BUY;
-		for(int i = 1 ; i < noOfTrades; i++)
+		for(int i = 1 ; i <= noOfTrades; i++)
 		{
 			trades.add(new TradeData(i, tradeType, "Security_"+1, "Company_"+1, 
 					buyQuantity, buyAmount, currentTimeMillis));
