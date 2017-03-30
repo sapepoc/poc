@@ -23,6 +23,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sample.model.Fact;
 
+/**
+ * 
+ * @author hgaur2
+ *
+ */
 @RestController
 public class RuleServiceController {
 

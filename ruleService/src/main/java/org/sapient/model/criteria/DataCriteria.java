@@ -1,5 +1,11 @@
 package org.sapient.model.criteria;
 
+/**
+ * 
+ * @author hgaur2
+ *
+ * @param <V>
+ */
 public class DataCriteria<V> {
 
 	private final Class<V> to;

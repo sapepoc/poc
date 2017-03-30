@@ -9,6 +9,11 @@ import java.util.Collection;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * 
+ * @author hgaur2
+ *
+ */
 @Component
 public class DefaultProxyService implements ProxyService {
 

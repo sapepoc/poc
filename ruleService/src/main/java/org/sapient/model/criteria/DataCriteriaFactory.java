@@ -10,6 +10,11 @@ import org.springframework.stereotype.Component;
 
 import com.sample.model.Fact;
 
+/**
+ * 
+ * @author hgaur2
+ *
+ */
 @Component
 public class DataCriteriaFactory {
 

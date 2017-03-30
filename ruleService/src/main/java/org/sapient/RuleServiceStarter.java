@@ -5,6 +5,11 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
 
+/**
+ * 
+ * @author hgaur2
+ *
+ */
 @SpringBootApplication
 @EnableAutoConfiguration
 @ImportResource({ "classpath:application-context.xml" })

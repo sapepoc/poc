@@ -4,6 +4,11 @@ import java.util.Date;
 
 import com.sample.model.Fact;
 
+/**
+ * 
+ * @author hgaur2
+ *
+ */
 public class Trade implements Fact {
 	private String user;
 	private String security;

@@ -4,6 +4,11 @@ import java.util.Collection;
 
 import org.sapient.model.criteria.DataCriteria;
 
+/**
+ * 
+ * @author hgaur2
+ *
+ */
 public interface DataUnmarshaller {
 
 	public <V> Collection<V> unmarshal(DataCriteria<V> dataCriteria, Collection<String> xmls);

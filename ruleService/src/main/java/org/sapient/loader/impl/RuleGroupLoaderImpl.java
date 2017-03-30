@@ -7,6 +7,11 @@ import org.sapient.rule.RuleGroup;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+/**
+ * 
+ * @author hgaur2
+ *
+ */
 @Component
 @Qualifier("ruleGroupLoader")
 public class RuleGroupLoaderImpl implements RuleGroupLoader {
