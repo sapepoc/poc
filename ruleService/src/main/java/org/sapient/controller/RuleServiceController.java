@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 
 import org.sapient.loader.DataLoader;
 import org.sapient.loader.RuleGroupLoader;
+import org.sapient.model.Fact;
 import org.sapient.model.criteria.DataCriteriaFactory;
 import org.sapient.rule.RuleGroup;
 import org.sapient.ruleengine.alarm.core.AlarmEvent;
@@ -20,8 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.sample.model.Fact;
 
 /**
  * 

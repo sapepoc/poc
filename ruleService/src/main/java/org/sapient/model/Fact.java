@@ -1,4 +1,4 @@
-package com.sample.model;
+package org.sapient.model;
 
 /**
  * 

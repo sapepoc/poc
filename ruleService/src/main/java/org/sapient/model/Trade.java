@@ -2,8 +2,6 @@ package org.sapient.model;
 
 import java.util.Date;
 
-import com.sample.model.Fact;
-
 /**
  * 
  * @author hgaur2

@@ -5,10 +5,9 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
+import org.sapient.model.Fact;
 import org.sapient.model.Trade;
 import org.springframework.stereotype.Component;
-
-import com.sample.model.Fact;
 
 /**
  * 
