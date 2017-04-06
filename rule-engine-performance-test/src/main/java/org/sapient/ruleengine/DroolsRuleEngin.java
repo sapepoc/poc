@@ -11,15 +11,18 @@ import org.sapient.ruleengine.report.PerformanceMonitor;
 import org.sapient.ruleengine.report.PerformanceReport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.env.Environment;
 
 public class DroolsRuleEngin extends AbstractRuleEngin
 {
 	private static Logger LOGGER = LoggerFactory.getLogger(DroolsRuleEngin.class);
 	private DroolsManager droolsManager;
+	private Environment environment;
 	
-	public DroolsRuleEngin(AlarmEventProcessor alarmEventProcessor)
+	public DroolsRuleEngin(AlarmEventProcessor alarmEventProcessor, Environment environment)
 	{
 		super(alarmEventProcessor);
+		this.environment = environment;
 		droolsManager = new DroolsManager();
 	}
 
@@ -30,7 +33,8 @@ public class DroolsRuleEngin extends AbstractRuleEngin
 		
 		PerformanceMonitor monitor = new PerformanceMonitor();
 		monitor.startMonitoring();
-		KieSession kieSession = droolsManager.createSession("baseKSession-rules");
+		//KieSession kieSession = droolsManager.createSession("baseKSession-rules");
+		KieSession kieSession = droolsManager.createKieSession(environment.getProperty("rule.package.fx"));
 		kieSession.setGlobal("alarmEventListener", alarmEventProcessor);
 		PerformanceReport performanceReport = monitor.stopMonitoring();
 		System.out.println("*******************session creation:::performanceReport="+ performanceReport);

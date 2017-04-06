@@ -1,5 +1,8 @@
 package org.sapient.ruleengine.utils;
 
+import java.io.File;
+import java.util.List;
+
 public class CommonUtils 
 {
 	private static final long MEGABYTE = 1024L * 1024L;
@@ -49,6 +52,21 @@ public class CommonUtils
 		{
 			e.printStackTrace();
 		}
+	}
+	
+	public static void listFilesForFolder(final File folder, List<File> files)
+	{
+	    for (final File fileEntry : folder.listFiles()) 
+	    {
+	        if (fileEntry.isDirectory())
+	        {
+	            listFilesForFolder(fileEntry, files);
+	        } 
+	        else
+	        {
+	        	files.add(fileEntry);
+	        }
+	    }
 	}
 
 }

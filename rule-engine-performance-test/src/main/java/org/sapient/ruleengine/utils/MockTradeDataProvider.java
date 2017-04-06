@@ -17,12 +17,16 @@ public class MockTradeDataProvider
 		int buyAmount = 1000;
 		long currentTimeMillis = System.currentTimeMillis();
 		
-		TradeType tradeType = TradeType.BUY;
 		for(int i = 1 ; i <= noOfTrades; i++)
 		{
-			trades.add(new TradeData(i, tradeType, "Security_"+1, "Company_"+1, 
+			String company = "Company_"+i;
+			String security = "Security_"+i;
+			
+			trades.add(new TradeData(i, TradeType.BUY, security, company, 
 					buyQuantity, buyAmount, currentTimeMillis));
-			tradeType = tradeType == TradeType.BUY ? TradeType.SELL : TradeType.BUY;
+			i++;
+			trades.add(new TradeData(i, TradeType.SELL, security, company, 
+					buyQuantity, buyAmount, currentTimeMillis));
 		}
 		
 		return trades;
